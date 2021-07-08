@@ -1,0 +1,41 @@
+https://github.com/adamcasson/c3d/releases/download/v0.1/sports1M_weights_tf.h5
+
+python save_model.py --model yolov4 --input_size 608 --output "./checkpoints/yolov4-608"
+
+python save_model.py --model yolov4 --weights "./data/yolov4-tiny.weights" --output "./checkpoints/yolov4-416-tiny"
+
+python save_model.py --model yolov4 --input_size 512 --weights "./data/yolov4-tiny-cctv_final.weights" --output "./checkpoints/yolov4-512-tiny_cctv" --tiny
+
+python save_model.py --model yolov4 --input_size 608 --weights "./data/yolov4-tiny-cctv_final.weights" --output "./checkpoints/yolov4-tiny-608_cctv" --tiny
+
+
+python object_tracker.py --video "E:\DATA\@cctv\마포하류14-2_20200307191600_20200307191830.avi" --output "./outputs/마포하류14-2_20200307191600_20200307191830.mp4" --model yolov4 --weights "./checkpoints/yolov4-608" --size 608
+
+python object_tracker.py --video ./data/video/cctv1.mov --output ./outputs/cctv1.mp4 --model yolov4 --weights "./checkpoints/yolov4-608" --size 608
+
+python object_tracker.py --video ./data/video/nextlab_cctv_20210325.mp4 --output ./outputs/nextlab_cctv_20210325_yolov4_608.mp4 --model yolov4 --weights "./checkpoints/yolov4-608" --size 608
+
+python object_tracker.py --video ./data/video/nextlab_cctv_20210330.mp4 --output ./outputs/nextlab_cctv_20210330_yolov4_608.mp4 --model yolov4 --weights "./checkpoints/yolov4-608" --size 608
+
+
+python object_tracker_2dcnn.py --video ./data/video/cctv2.avi --output ./outputs/cctv2.mp4 --model yolov4 --weights "./checkpoints/yolov4-608" --size 608
+
+python object_tracker_2dcnn.py --video ./data/video/cctv3.avi --output ./outputs/cctv3-2.mp4 --model yolov4 --weights "./checkpoints/yolov4-608" --size 608
+
+
+python object_tracker_label.py --video "E:\DEV_AI\2dcnn_maker\cctv3.avi"--model yolov4 --weights "./checkpoints/yolov4-608" --size 608
+
+
+python object_tracker_labelme.py --video "E:\DATA\@cctv\마포하류02-1_20191218103400_20191218105004.avi" --output "E:\DATA\@cctv\@labelme\20191218103400"
+
+python object_tracker_labelme.py --video "E:\DATA\@cctv\마포하류14-2_20200307191600_20200307191830.avi" --output "E:\DATA\@cctv\@labelme\20200307191600"
+
+python object_tracker_labelme.py --video "E:\DATA\@cctv\마포-하류14-회전_20191109140542_20191109151028.avi" --output "E:\DATA\@cctv\@labelme\20191109140542"
+
+python object_tracker_labelme.py --video "E:\DATA\@cctv\마포-하류14-회전_20191109151028_20191109161514.avi" --output "E:\DATA\@cctv\@labelme\20191109151028"
+
+python object_tracker_labelme.py --video "E:\DATA\@cctv\마포-하류14-회전_20191109161514_20191109170000.avi" --output "E:\DATA\@cctv\@labelme\20191109161514"
+
+
+python object_tracker_labelme.py --video "E:\DATA\@cctv\보행자\마포하류16-1_20191218225837_20191218231600.avi" --output "E:\DATA\@cctv\@labelme\20191218225837"
+

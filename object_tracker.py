@@ -6,6 +6,8 @@ import tensorflow as tf
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
 if len(physical_devices) > 0:
     tf.config.experimental.set_memory_growth(physical_devices[0], True)
+    tf.config.experimental.set_visible_devices(physical_devices[0], 'GPU')
+
 from absl import app, flags, logging
 from absl.flags import FLAGS
 import core.utils as utils
@@ -31,7 +33,7 @@ flags.DEFINE_boolean('tiny', False, 'yolo or yolo-tiny')
 flags.DEFINE_string('model', 'yolov4', 'yolov3 or yolov4')
 flags.DEFINE_string('video', './data/video/test.mp4', 'path to input video or set to 0 for webcam')
 flags.DEFINE_string('output', None, 'path to output video')
-flags.DEFINE_string('output_format', 'XVID', 'codec used in VideoWriter when saving video to file')
+flags.DEFINE_string('output_format', 'MP4V', 'codec used in VideoWriter when saving video to file')
 flags.DEFINE_float('iou', 0.45, 'iou threshold')
 flags.DEFINE_float('score', 0.50, 'score threshold')
 flags.DEFINE_boolean('dont_show', False, 'dont show video output')
@@ -90,18 +92,38 @@ def main(_argv):
         codec = cv2.VideoWriter_fourcc(*FLAGS.output_format)
         out = cv2.VideoWriter(FLAGS.output, codec, fps, (width, height))
 
+    # print("CAP_PROP_ORIENTATION_META:", vid.get(cv2.CAP_PROP_ORIENTATION_META))
+    # print("CAP_PROP_ORIENTATION_AUTO:", vid.get(cv2.CAP_PROP_ORIENTATION_AUTO))
+
+    # return
+
+
     frame_num = 0
     # while video is running
+
     while True:
         return_value, frame = vid.read()
+
+
+
         if return_value:
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            # frame=cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
             image = Image.fromarray(frame)
         else:
             print('Video has ended or failed, try a different video format!')
             break
         frame_num +=1
         print('Frame #: ', frame_num)
+
+        # if frame_num < 8000:
+        #     frame_num += 1
+        #     continue
+        # elif frame_num == 13000:
+        #     break
+
+
+
         frame_size = frame.shape[:2]
         image_data = cv2.resize(frame, (input_size, input_size))
         image_data = image_data / 255.
@@ -137,6 +159,8 @@ def main(_argv):
             score_threshold=FLAGS.score
         )
 
+        # print(classes)
+
         # convert data to numpy arrays and slice out unused elements
         num_objects = valid_detections.numpy()[0]
         bboxes = boxes.numpy()[0]
@@ -157,10 +181,11 @@ def main(_argv):
         class_names = utils.read_class_names(cfg.YOLO.CLASSES)
 
         # by default allow all classes in .names file
-        allowed_classes = list(class_names.values())
+        # allowed_classes = list(class_names.values())
         
         # custom allowed classes (uncomment line below to customize tracker for only people)
-        #allowed_classes = ['person']
+        allowed_classes = ['person', 'car']
+        # allowed_classes = ['person']
 
         # loop through objects and use class index to get class name, allow only classes in allowed_classes list
         names = []

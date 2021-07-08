@@ -1,0 +1,47 @@
+{
+  "version": "3.22.2",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "plate",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          140.86021505376343,
+          153.3763440860215
+        ],
+        [
+          206.4516129032258,
+          151.9426523297491
+        ],
+        [
+          206.8100358422939,
+          165.921146953405
+        ],
+        [
+          141.57706093189964,
+          167.3548387096774
+        ]
+      ],
+      "shape_type": "polygon",
+      "flags": {}
+    }
+  ],
+  "lineColor": [
+    0,
+    255,
+    0,
+    128
+  ],
+  "fillColor": [
+    255,
+    0,
+    0,
+    64
+  ],
+  "imagePath": "UEZG5488.jpg_1.jpg",
+  "imageData": null,
+  "imageHeight": 217,
+  "imageWidth": 261
+}
