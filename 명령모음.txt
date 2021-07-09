@@ -1,5 +1,9 @@
 https://github.com/adamcasson/c3d/releases/download/v0.1/sports1M_weights_tf.h5
 
+python save_model.py --model yolov4 --weights "./data/yolov4-person.weights" --input_size 608 --output "./checkpoints/yolov4-person-608"
+
+python save_model.py --model yolov4 --weights "./data/yolov4-person.weights" --input_size 512 --output "./checkpoints/yolov4-person-512"
+
 python save_model.py --model yolov4 --input_size 608 --output "./checkpoints/yolov4-608"
 
 python save_model.py --model yolov4 --weights "./data/yolov4-tiny.weights" --output "./checkpoints/yolov4-416-tiny"
@@ -10,6 +14,12 @@ python save_model.py --model yolov4 --input_size 608 --weights "./data/yolov4-ti
 
 
 python object_tracker.py --video "E:\DATA\@cctv\마포하류14-2_20200307191600_20200307191830.avi" --output "./outputs/마포하류14-2_20200307191600_20200307191830.mp4" --model yolov4 --weights "./checkpoints/yolov4-608" --size 608
+
+python object_tracker.py --video "E:\DATA\@cctv\@자살의심\20210328_마포상류_자살의심\마포상류01-회전_20210328220839_20210328222030.avi" --output "./outputs/마포상류01-회전_20210328220839_20210328222030.mp4" --model yolov4 --weights "./checkpoints/yolov4-person-512" --size 512
+
+python object_tracker.py --video "E:\DATA\@cctv\보행자_done\(시간에 따라 한강색이 변함)마포-상류15-회전_20191109173924_20191109184410.avi" --output "./outputs/(시간에 따라 한강색이 변함)마포-상류15-회전_20191109173924_20191109184410.mp4" --model yolov4 --weights "./checkpoints/yolov4-person-608" --size 608
+
+python object_tracker.py --video "E:\DATA\@cctv\보행자_done\마포-하류14-회전_20191109140542_20191109151028.avi" --output "./outputs/마포-하류14-회전_20191109140542_20191109151028.mp4" --model yolov4 --weights "./checkpoints/yolov4-person-512" --size 512
 
 python object_tracker.py --video ./data/video/cctv1.mov --output ./outputs/cctv1.mp4 --model yolov4 --weights "./checkpoints/yolov4-608" --size 608
 

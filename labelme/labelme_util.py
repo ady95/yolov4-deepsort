@@ -14,7 +14,9 @@ def count_object_from_labelme(labelme_path):
 
 if __name__ == "__main__":
 
-    BASE_FOLDER = r"E:\DATA\@cctv\@labelme"
+    # BASE_FOLDER = r"E:\DATA\@cctv\@labelme"
+    # BASE_FOLDER = r"E:\DATA\@cctv\@labelme_검수\보행자_검수\보행자_검수완료"
+    BASE_FOLDER = r"E:\DATA\@cctv\@labelme_검수\보행자_검수2차\2차 검수파일"
     
     all_count = 0
     for folder in os.listdir(BASE_FOLDER):

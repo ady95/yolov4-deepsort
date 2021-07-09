@@ -163,6 +163,8 @@ def main(_argv):
 
         # convert data to numpy arrays and slice out unused elements
         num_objects = valid_detections.numpy()[0]
+        print(num_objects)
+
         bboxes = boxes.numpy()[0]
         bboxes = bboxes[0:int(num_objects)]
         scores = scores.numpy()[0]
@@ -181,11 +183,11 @@ def main(_argv):
         class_names = utils.read_class_names(cfg.YOLO.CLASSES)
 
         # by default allow all classes in .names file
-        # allowed_classes = list(class_names.values())
+        allowed_classes = list(class_names.values())
         
         # custom allowed classes (uncomment line below to customize tracker for only people)
         # allowed_classes = ['person', 'car']
-        allowed_classes = ['person']
+        # allowed_classes = ['person']
 
         # loop through objects and use class index to get class name, allow only classes in allowed_classes list
         names = []
